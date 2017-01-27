@@ -256,7 +256,7 @@ define([
   };
 
   // Append an array of jQuery nodes to a given element.
-  Utils.appendMany = function ($element, $nodes) {
+  Utils.appendMany = function ($element, $nodes, prepend) {
     // jQuery 1.7.x does not support $.fn.append() with an array
     // Fall back to a jQuery object collection using $.fn.add()
     if ($.fn.jquery.substr(0, 3) === '1.7') {
@@ -268,8 +268,10 @@ define([
 
       $nodes = $jqNodes;
     }
-
-    $element.append($nodes);
+    if (prepend)/* modified  */
+      $element.prepend($nodes);
+    else
+      $element.append($nodes);
   };
 
   return Utils;

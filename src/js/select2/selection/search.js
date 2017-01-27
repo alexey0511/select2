@@ -170,6 +170,12 @@ define([
 
     decorated.call(this, data);
 
+    //FIXED: add the following check to avoid appending the element if it's already there
+    if (this.$selection.find('.select2-selection__rendered').find(this.$searchContainer).length) {
+        this.resizeSearch();
+        return ;
+    }
+
     this.$selection.find('.select2-selection__rendered')
                    .append(this.$searchContainer);
 
