@@ -170,6 +170,11 @@ define([
 
     decorated.call(this, data);
 
+    if (this.$selection.find('.select2-selection__rendered').find(this.$searchContainer).length) {
+        this.resizeSearch();
+        return ;
+    }
+
     this.$selection.find('.select2-selection__rendered')
                    .append(this.$searchContainer);
 
